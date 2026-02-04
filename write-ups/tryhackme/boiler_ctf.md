@@ -1,6 +1,7 @@
 
 ---
 
+layout: default
 title: "Boiler CTF"
 platform: "TryHackme"
 difficulty: "Medium"

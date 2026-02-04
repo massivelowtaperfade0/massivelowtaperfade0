@@ -2,10 +2,11 @@
 layout: home
 ---
 
-## Hi, I am Bhavesh
+## Hi i am Bhavesh
 
 
 ### About Me
+
 I hold a **Bachelor of Science in Information Technology** degree and am currently close to completing the **eJPT (eLearn Junior Penetration Tester)** certification.  
 I aim to build a career in **Vulnerability Assessment & Penetration Testing (VAPT)** and **cloud security**.
 

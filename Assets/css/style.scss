@@ -1,0 +1,55 @@
+---
+---
+
+@import "minima";
+
+/* Global dark theme */
+body {
+  background-color: #0f1117; /* soft dark gray */
+  color: #e6e6e6;
+  line-height: 1.7;
+}
+
+/* Headings */
+h1, h2, h3, h4, h5, h6 {
+  color: #f0f0f0;
+}
+
+/* Links */
+a {
+  color: #7aa2f7;
+}
+a:hover {
+  color: #9bb8ff;
+}
+
+/* Code blocks */
+pre, code {
+  background-color: #161b22;
+  color: #e6e6e6;
+  border-radius: 6px;
+}
+
+/* Inline code */
+code {
+  padding: 0.2em 0.4em;
+}
+
+/* Blockquotes */
+blockquote {
+  background-color: #161b22;
+  border-left: 4px solid #7aa2f7;
+  padding: 0.8em 1em;
+  color: #d0d0d0;
+}
+
+/* Horizontal rule */
+hr {
+  border: none;
+  border-top: 1px solid #2a2f3a;
+}
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid #2a2f3a;
+}

@@ -23,8 +23,9 @@ h1, h2, h3 {
   margin-top: 2rem;
 }
 
-/* Images should scale nicely */
-img {
-  max-width: 100%;
-  height: auto;
+.page-content img {
+  max-width: 80%;
+  display: block;
+  margin: 1.5rem auto;
 }
+

@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: page
 title: "Boiler CTF"
 permalink: /write-ups/tryhackme/boiler-ctf/
 platform: "TryHackMe"

@@ -32,7 +32,7 @@ I intentionally keep these write-ups **raw and transparent** to reflect how real
 ### 📓 Write-ups
 
 #### TryHackMe
-- [Boiler CTF — Medium](Write-Ups/TryHackMe/Boiler-ctf/)
+- [Boiler CTF — Medium](write-ups/tryhackme/boiler-ctf/)
 
 ---
 

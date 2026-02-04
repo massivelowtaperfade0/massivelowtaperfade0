@@ -1,14 +1,12 @@
-
 ---
-
 layout: default
 title: "Boiler CTF"
 platform: "TryHackme"
 difficulty: "Medium"
 categories: [tryhackme, ctf]
 tags: [enumeration, suid, gtfobins, nmap, gobuster, cyberchef]
-
 ---
+
 ### About this Challenge
 **Boiler CTF** by [MrSeth6769](https://tryhackme.com/p/MrSeth6797)is a medium-difficulty TryHackMe room designed to strengthen web enumeration and Linux pentesting skills.  
 The challenge focuses on identifying misconfigurations and abusing poor privilege management within the server’s operating system.

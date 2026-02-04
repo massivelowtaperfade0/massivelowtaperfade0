@@ -1,7 +1,8 @@
 ---
 layout: default
 title: "Boiler CTF"
-platform: "TryHackme"
+permalink: /write-ups/tryhackme/boiler-ctf/
+platform: "TryHackMe"
 difficulty: "Medium"
 categories: [tryhackme, ctf]
 tags: [enumeration, suid, gtfobins, nmap, gobuster, cyberchef]

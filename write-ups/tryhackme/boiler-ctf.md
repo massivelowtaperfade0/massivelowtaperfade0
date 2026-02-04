@@ -9,7 +9,7 @@ tags: [enumeration, suid, gtfobins, nmap, gobuster, cyberchef]
 ---
 
 ### About this Challenge
-**Boiler CTF** by [MrSeth6769](https://tryhackme.com/p/MrSeth6797)is a medium-difficulty TryHackMe room designed to strengthen web enumeration and Linux pentesting skills.  
+**Boiler CTF** by [MrSeth6769](https://tryhackme.com/p/MrSeth6797) is a medium-difficulty TryHackMe room designed to strengthen web enumeration and Linux pentesting skills.  
 The challenge focuses on identifying misconfigurations and abusing poor privilege management within the server’s operating system.
 
 This room reinforces the importance of **thorough enumeration** before exploitation and follows a standard VAPT-style methodology.

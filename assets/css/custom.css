@@ -29,3 +29,23 @@ h1, h2, h3 {
   margin: 1.5rem auto;
 }
 
+.copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  background: #2d2d2d;
+  color: #ddd;
+  opacity: 0.8;
+}
+
+.copy-btn:hover {
+  opacity: 1;
+  background: #444;
+}
+
+

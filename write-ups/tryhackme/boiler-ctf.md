@@ -1,10 +1,11 @@
 ---
 layout: page
-title: "Boiler CTF"
+title: "Boiler CTF TryHackMe Write-Up"
+description: "A walkthrough of the Boiler CTF room covering enumeration, exploitation, and privilege escalation."
 permalink: /write-ups/tryhackme/boiler-ctf/
 platform: "TryHackMe"
 difficulty: "Medium"
-categories: [tryhackme, ctf]
+categories: [tryhackme, ctf, writeups]
 tags: [enumeration, suid, gtfobins, nmap, gobuster, cyberchef]
 ---
 
@@ -50,11 +51,10 @@ nmap -sS -sV -sC -Pn <target-ip> -oN scan.txt
 
 ![Nmap Scan](../../assets/images/Boiler_ctf/Nmap_Scan.png)
 
-Taking a look at the scan results we can see that, three ports are open i.e. 21, 80 and 10000, which as per the `-sV` flag are running, one FTP and two HTTP services (one at port 80 and another at higher port 10000)
+Taking a look at the scan results we can see that, three ports are open i.e. 21, 80 and 10000, which as per the   `-sV` flag are running, one FTP and two HTTP services (one at port 80 and another at higher port 10000)
 
 > **Key finding:**
 >Anonymous FTP login is enabled. This allows unauthenticated users to access the FTP service, which may lead to sensitive information disclosure and/or unauthorized file uploads.
-
 >By default, Nmap scans the top 1000 most common ports, which caused us to initially miss the SSH service running on a high port 55007.
 
 ---
@@ -62,7 +62,7 @@ Taking a look at the scan results we can see that, three ports are open i.e. 21,
 
 #### FTP Enumeration:
 
-Since anonymous login is enables lets start with FTP
+Since anonymous login is enabled lets start with FTP
 - To authenticate, we connect to the FTP service and log in using the username `anonymous`.
 - Upon listing the directory contents, a hidden file named `.info.txt` is discovered.
 - The file contains text that appears unreadable at first glance but does not resemble a complex hash.
@@ -94,7 +94,7 @@ Since we have two HTTP service running, i started off with the native port 80
  
  ![Default Page](../../assets/images/Boiler_ctf/Default_Page.png)
  
- - Nmap scan also show presence of `/robots.txt` but it turns out to be a rabbit hole (*Not surprising at all, as the contents of the file speaks for itself, but we still had to verify*)
+ - Nmap scan also shows presence of `/robots.txt` but it turns out to be a rabbit hole (*Not surprising at all, as the contents of the file speaks for itself, but we still had to verify*)
  
  ![robots.txt](../../assets/images/Boiler_ctf/robot_txt.png)
  
@@ -124,7 +124,7 @@ gobuster dir -w /usr/share/wordlists/dirbuster/directory-list-2.3-medial.txt -u 
 gobuster dir -w /usr/share/wordlists/dirb/common.txt -u http://<target-ip>/joomla
 ```
 
-- This scan resulted in new finding which are as follow:
+- This scan resulted in a few new finding which are as follow:
 
 ![joomla_dirs2](../../assets/images/Boiler_ctf/joomal_dirs2.png)
 
@@ -139,14 +139,14 @@ In our last stage of Web Enumeration we found, our first exploitation vector `/_
 
 ![Exploit-DB](../../assets/images/Boiler_ctf/exploit-db.png)
 
-- Exploit-DB provide clear and concise, steps to reproduce exploit for this vulnerable service, I encourage you to visit `exploit-db` and refer to this exploit's functionality
+- Exploit-DB provides clear and concise steps to reproduce exploit for this vulnerable service, I encourage you to visit `exploit-db` and refer to this exploit's functionality
 - Utilizing this method, we are able to perform directory listing on remote server using following crafted URL
 
 ```URL
 http://<target-ip>/joomla/_text/index.php?plot;ls
 ```
 
-- It successfully list contents of the remote server directory, and we see one interesting file named `log.txt`, similarly we can execute other bash command such as `pwd`, `whoami`, `cat`, etc.
+- It successfully lists the contents of the remote server directory, and we see one interesting file named `log.txt`, similarly we can execute other bash command such as `pwd`, `whoami`, `cat`, etc.
 - It's always recommended to use URL encoding before pushing any URL payload, again you can use `CyberChef` for URL-Encoding as well
 
 ```
@@ -160,7 +160,7 @@ http://<target-ip>/joomla/_text/index.php?plot;cat%20log.txt
 ---
 ### Initial Access
 
-- We use this credentials to login via SSH  as a legitimate user. (*Note... SSH is running on port 55007 as per earlier findings*)
+- We used this credentials to login via SSH  as a legitimate user. (*Note... SSH is running on port 55007 as per earlier findings*)
 
 ```bash
 ssh -p 55007 [REDACTED]@<target-ip>
@@ -191,7 +191,7 @@ cat .secret
 
 ![secret](../../assets/images/Boiler_ctf/secret.png)
 
-- And just like that can have access to our first sensitive information on the target system
+- We have access to our first sensitive information on the target system
 - ( *Since i wasn't aware that the `.secret` file was the `user.txt` flag, i ran a command to search for it, only after a solid 10 minutes when i couldn't find it, that I saw that the content of `.secret` matched the placeholder for `uset.txt` on TryHackMe* )
 
 ---
@@ -230,8 +230,9 @@ Upon executing command shown in the above image we get a shell as root
 
 ![root_txt](../../assets/images/Boiler_ctf/root_txt.png)
 
-Since i know, where the `root.txt` was in the `/root` directory, i was able to read it's content without having to look for it's path
-But since we have SUID enable `find` command, we are able to list the contents for `/root` directory without any `sudo` privileges, as shown in the above command
+I usually look for `root.txt` in the `/root` directory, and i was right regarding it.
+But we can also utilize `find` command to look for the `root.txt` in `/` directory as well, since it has SUID bit enabled.
+Searching in the `/` directory will traverse and look for specified argument, in entirety of the root(/) block and it's sub-directories and files as well.
 
 ---
 

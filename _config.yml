@@ -1,8 +1,13 @@
 title: Security Write-Ups
-description: Pentesting & TryHackMe write-ups
+description: VAPT-focused TryHackMe and CTF write-ups documenting enumeration, exploitation, and privilege escalation.
+
+url: https://massivelowtaperfade0.github.io
 remote_theme: jekyll/minima
+
 plugins:
   - jekyll-remote-theme
+  - jekyll-seo-tag
+
 minima:
   skin: dark
 

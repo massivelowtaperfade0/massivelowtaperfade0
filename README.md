@@ -17,7 +17,7 @@ This repository serves as a **practical security portfolio** documenting my hand
 It is intentionally structured to reflect **how real security work is performed**, not just how CTFs are solved.
 
 **Live site (GitHub Pages):**  
-https://massivelowtaperfade0.github.io/massivelowtaperfade0/
+https://massivelowtaperfade0.github.io/
 
 ---
 
